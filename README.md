@@ -1,55 +1,38 @@
-<?php
-/*
-Plugin Name: Slick Posts Slider
-Description: Allows users to display a slick.js slider using a shortcode
-Version: 1.0
-Author: Your Name
-*/
+Slick Posts Slider
+WordPress plugin that allows users to display a slick.js slider. It's a simple plugin that leverages the Slick slider to display a carousel of posts.
 
-function slick_posts_slider_enqueue_scripts() {
-    wp_enqueue_style( 'slick', plugin_dir_url( __FILE__ ) . 'css/slick.css', array(), '1.8.1' );
-    wp_enqueue_style( 'slick-theme', plugin_dir_url( __FILE__ ) . 'css/slick-theme.css', array(), '1.8.1' );
-    wp_enqueue_script( 'slick', plugin_dir_url( __FILE__ ) . 'js/slick.min.js', array( 'jquery' ), '1.8.1', true );
-    wp_enqueue_script( 'slick-init', plugin_dir_url( __FILE__ ) . 'js/slick-init.js', array( 'slick' ), '1.0', true );
-}
+Features
+Enqueue necessary Slick.js files
+Defines a custom shortcode [slick_posts_slider] to display a slider with posts
+You can specify the post type with the post_type attribute in the shortcode. Default post type is 'post'
+Requirements
+This plugin requires the following JavaScript and CSS files from Slick Slider:
 
-add_action( 'wp_enqueue_scripts', 'slick_posts_slider_enqueue_scripts' );
+slick.min.js
+slick.css
+slick-theme.css
+These files should be downloaded and placed in the css and js folders within the plugin folder.
 
-function slick_posts_slider_shortcode($atts) {
-    $atts = shortcode_atts( array(
-        'post_type' => 'post',
-    ), $atts );
+Slick Slider assets can be downloaded from the Slick GitHub repository: Slick
 
-    $args = array(
-        'post_type' => $atts['post_type'],
-        'post_status' => 'publish',
-        'posts_per_page' => 6,
-        'orderby' => 'date',
-        'order' => 'DESC',
-    );
-    
-    $query = new WP_Query($args);
-    $output = '<div class="single-item-slider">';
+Installation
+Download the zip file and extract the contents.
+Download the necessary Slick Slider assets (links provided above) and place them in the css and js folders within the slick-posts-slider folder.
+Upload the slick-posts-slider folder to your /wp-content/plugins/ directory.
+Activate the Slick Posts Slider plugin through the 'Plugins' menu in WordPress.
+Usage
+Place the [slick_posts_slider] shortcode wherever you want the posts slider to appear.
 
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            $post_link = esc_url(get_permalink());
-            $post_title = esc_html(get_the_title());
-            $post_image = esc_url(get_the_post_thumbnail_url());
-            $output .= '<div>';
-            $output .= '<a href="' . $post_link . '">';
-            $output .= '<img src="' . $post_image . '" alt="' . $post_title . '">';
-            $output .= '<h2>' . $post_title . '</h2>';
-            $output .= '</a>';
-            $output .= '</div>';
-        }
-    }
-    wp_reset_postdata();
+Example: [slick_posts_slider post_type='your_post_type']
 
-    $output .= '</div>';
-    
-    return $output;
-}
+Frequently Asked Questions
+How do I use the shortcode?
+Place the [slick_posts_slider] shortcode wherever you want the posts slider to appear.
 
-add_shortcode( 'slick_posts_slider', 'slick_posts_slider_shortcode' );
+Can I display other post types besides 'post'?
+Yes, you can specify the post type with the post_type attribute in the shortcode.
+
+Changelog
+1.0
+
+Initial release
