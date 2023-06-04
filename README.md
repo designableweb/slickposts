@@ -1,5 +1,5 @@
-Slick Posts Slider
-WordPress plugin that allows users to display a slick.js slider. It's a simple plugin that leverages the Slick slider to display a carousel of posts.
+<h2>Slick Posts Slider</h2>
+<p>WordPress plugin that allows users to display a slick.js slider. It's a simple plugin that leverages the Slick slider to display a carousel of posts.</p>
 
 Features
 Enqueue necessary Slick.js files
