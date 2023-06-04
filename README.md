@@ -2,9 +2,11 @@
 <p>WordPress plugin that allows users to display a slick.js slider. It's a simple plugin that leverages the Slick slider to display a carousel of posts.</p>
 
 <h2>Features</h2>
-Enqueue necessary Slick.js files
-Defines a custom shortcode [slick_posts_slider] to display a slider with posts
-You can specify the post type with the post_type attribute in the shortcode. Default post type is 'post'
+<ul>
+<li>Enqueue necessary Slick.js files</li>
+<li>Defines a custom shortcode [slick_posts_slider] to display a slider with posts</li>
+<li>You can specify the post type with the post_type attribute in the shortcode. Default post type is 'post'</li>
+ </ul>
 
 <h2>Requirements</h2>
 This plugin requires the following JavaScript and CSS files from Slick Slider:
